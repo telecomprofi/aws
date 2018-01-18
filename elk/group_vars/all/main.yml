@@ -1,0 +1,3 @@
+elasticsearch: "{{ aws_2 }}"
+url: "https://packages.elastic.co/GPG-KEY-elasticsearch"
+repo: deb https://artifacts.elastic.co/packages/5.x/apt stable main

@@ -1,0 +1,9 @@
+output {
+ elasticsearch {
+   type => "test_log"
+   hosts => ["{{ elasticsearch }}":9200"]
+   embedded => false
+   manage_template => false
+   index => "logs-%{+YYYY.MM.dd}"
+ }
+}

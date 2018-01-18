@@ -1,0 +1,21 @@
+---
+#
+#  playbook to install the ELK
+#
+
+- hosts: aws_2
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  roles:
+    - { role: java }
+    - { role: elasticsearch }
+
+- hosts: aws_1
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  roles:
+    - { role: java }
+    - { role: kibana }
+    - { role: logstash }

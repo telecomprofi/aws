@@ -1,0 +1,5 @@
+es_jvm_options_file: /etc/elasticsearch/jvm.options
+es_xmx: -Xmx
+es_xms: -Xms
+es_xmx_memory: 500m
+es_xms_memory: 500m

@@ -1,0 +1,61 @@
+---
+#
+# Installing Elasticsearch
+#
+
+# Add Elasticsearch apt key
+
+- name: Add Elasticsearch apt key
+  apt_key:
+   url: "{{ url }}"
+   state: present
+
+# Add the Elasticsearch apt repo
+
+- name: Adding Elasticsearch repo
+  apt_repository:
+   repo: "{{ repo }}"
+   state: present
+
+# Installing Elasticsearch
+
+- name: Install Elasticsearch
+  apt:
+   name: elasticsearch
+   update_cache: yes
+
+# Update Elasticsearch config file to allow access
+
+- name: Updating the config file to allow outside access
+  lineinfile:
+   destfile: /etc/elasticsearch/elasticsearch.yml
+   regexp: 'network.host:'
+   line: 'network.host: 0.0.0.0'
+
+# Update Elasticsearch port in config file
+
+- name: Updating the port in config file
+  lineinfile:
+   destfile: /etc/elasticsearch/elasticsearch.yml
+   regexp: 'http.port:'
+   line: 'http.port: 9200'
+
+# Update jvm options in config file
+
+- name: Update jvm options in config file
+  lineinfile:
+   destfile: "{{ es_jvm_options_file }}"
+   regexp: "{{ es_xms }}"
+   line: "{{ es_xms }}{{ es_xms_memory }}"
+   
+- name: Update jvm options in config file
+  lineinfile:
+   destfile: "{{ es_jvm_options_file }}"
+   regexp: "{{ es_xmx }}"
+   line: "{{ es_xmx }}{{ es_xmx_memory }}"
+
+# Start Elasticsearch
+- name: Starting Elasticsearch
+  service:
+   name: elasticsearch
+   state: started
