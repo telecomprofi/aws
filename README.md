@@ -17,3 +17,5 @@ Links to README files from tasks should be placed below in "Tasks" section.
 ### Tasks:
 
 #### 1. [Deploy ELK in AWS with Ansible](elk/README.md)
+#### 2. Simple HTTP web servers EC2 instances with CloudInit script that runs on startup
+![image](https://user-images.githubusercontent.com/17558124/142244852-25c3a831-c886-40ea-9640-523332efbd79.png)
